@@ -1,5 +1,5 @@
 
-CREATE TABLE empresa (
+CREATE TABLE luisa.empresa (
 id_empresa NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 nome VARCHAR2(255),
 email VARCHAR2(50),
@@ -8,7 +8,17 @@ uf CHAR(2),
 telefone VARCHAR2(30)
 );
 
-CREATE TABLE vaga (
+
+CREATE TABLE luisa.recrutador (
+id_recrutador NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+nome VARCHAR2(255),
+linkedin VARCHAR2(255),
+email VARCHAR2(100),
+telefone VARCHAR2(30)
+
+
+);
+CREATE TABLE luisa.vaga (
 id_vaga NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 titulo VARCHAR2(255)NOT NULL,
 status VARCHAR2(20)NOT NULL,
@@ -26,7 +36,7 @@ CONSTRAINT fk_recrutador FOREIGN KEY (id_recrutador) REFERENCES recrutador (id_r
 );
 
 
-CREATE TABLE entrevista (
+CREATE TABLE luisa.entrevista (
 id_entrevista NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 status VARCHAR2(20) NOT NULL,
 horario TIMESTAMP,
@@ -37,11 +47,3 @@ id_vaga INT,
 CONSTRAINT fk_vaga FOREIGN KEY (id_vaga) REFERENCES vaga(id_vaga)
 );
 
-CREATE TABLE recrutador (
-id_recrutador NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-nome VARCHAR2(255),
-linkedin VARCHAR2(255),
-email VARCHAR2(100),
-telefone VARCHAR2(30)
-
-);
